@@ -16,7 +16,17 @@ for (let i = 0; i < militaryHour.length; i++) {
    else if (militaryHour[i]< currentHour) {
         $("#"+i).addClass("past")
     }
+
+    if (localStorage.getItem(i)) {
+        $("#"+i).val(localStorage.getItem(i))
+    }
 }
+
+$(".saveBtn").on("click", function (){
+    var id =$(this).attr("data-id")
+    var getText = $("#"+id).val()
+    localStorage.setItem(id, getText)
+})
 
 // Current hour in moment 
 // Look in html (thomas)
